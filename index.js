@@ -64,7 +64,7 @@ function start() {
         }
         );
 };
-f
+
 function viewEmployees() {
     var query = "SELECT * FROM employees ";
     connection.query(query, function (err, res) {
@@ -89,18 +89,18 @@ function viewDepartment() {
         start();
     });
 };
-// function updateRoles() {
-//     inquirer
-//     .prompt([
-//         {
+function updateRoles() {
+    inquirer
+    .prompt([
+        {
 
-//         }
-//     ])
-//     connection.query(function (err, res) {
-//         if (err) throw err;
-//         start();
-//     });
-// };
+        }
+    ])
+    connection.query(function (err, res) {
+        if (err) throw err;
+        start();
+    });
+};
 
 
 
