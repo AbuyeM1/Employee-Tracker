@@ -20,18 +20,19 @@ function start() {
 
             type: 'list',
             message: 'What do you want to do?',
-            name: 'Menu',
+            name: 'Select',
             choices: ["view all employees",
                 "view all roles",
                 "view all department",
                 "Add departments",
                 "Add roles",
-                "Add employees"
+                "Add employees",
+                "Done"
             ]
         }
 
         )
-        .then((answer) => {
+        .then((ans) => {
             switch (ans.choices) {
                 case "view all employees":
                     viewEmployees();
@@ -55,7 +56,7 @@ function start() {
                 case "Add employees":
                     addDepartment();
                     break;
-                case "exit":
+                case "Done":
                     connection.end();
                     break;
 
@@ -63,31 +64,39 @@ function start() {
         }
         );
 };
-
-// function viewEmployees() {
-//     var query = "SELECT ";
-//     connection.query(query, function (err, res) {
-//         if (err) throw err;
-//         start();
-//     });
-// };
-// function viewRols() {
-//     var query = "SELECT ";
-//     connection.query(query, function (err, res) {
-//         if (err) throw err;
-//         start();
-//     });
-// };
-// function viewDepartment() {
-//     var query = "SELECT ";
-//     connection.query(query, function (err, res) {
-//         if (err) throw err;
-//         start();
-//     });
-// };
+f
+function viewEmployees() {
+    var query = "SELECT * FROM employees ";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.log(res);
+        start();
+    });
+};
+function viewRols() {
+    var query = "SELECT * FROM role";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.log(res);
+        start();
+    });
+};
+function viewDepartment() {
+    var query = "SELECT * FROM department";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.log(res);
+        start();
+    });
+};
 // function updateRoles() {
-//     var query = "SELECT ";
-//     connection.query(query, function (err, res) {
+//     inquirer
+//     .prompt([
+//         {
+
+//         }
+//     ])
+//     connection.query(function (err, res) {
 //         if (err) throw err;
 //         start();
 //     });
