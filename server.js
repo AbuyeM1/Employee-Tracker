@@ -3,8 +3,10 @@ const inquirer = require('inquirer');
 
 
 
+
 var connection = mysql.createConnection({
     host: "localhost",
+    port: 3306,
     user: "root",
     password: "password",
     database: "employeeDB"
@@ -12,6 +14,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
+    console.log(err);
     start();
 });
 function start() {
@@ -19,7 +22,7 @@ function start() {
         .prompt({
 
             type: 'list',
-            message: 'What do you want to do?',
+            message: 'What do you like to do?',
             name: 'Select',
             choices: ["view all employees",
                 "view all roles",
@@ -36,10 +39,11 @@ function start() {
             switch (ans.choices) {
                 case "view all employees":
                     viewEmployees();
-
+                    start();
                     break;
                 case "view all roles":
                     viewRols();
+                    start();
                     break;
                 case "view all departments":
                     viewDepartment();
@@ -57,53 +61,20 @@ function start() {
                     addDepartment();
                     break;
                 case "Done":
-                    connection.end();
+                   
                     break;
 
             }
         }
         );
 };
-
 function viewEmployees() {
-    var query = "SELECT * FROM employees ";
-    connection.query(query, function (err, res) {
-        if (err) throw err;
-        console.table(res);
-        start();
-    });
-};
-function viewRols() {
-    var query = "SELECT * FROM role";
-    connection.query(query, function (err, res) {
-        if (err) throw err;
-        console.table(res);
-        start();
-    });
-};
-function viewDepartment() {
-    var query = "SELECT * FROM department";
-    connection.query(query, function (err, res) {
-        if (err) throw err;
-        console.table(res);
-        start();
-    });
-};
-// function updateRoles() {
-//     inquirer
-//     .prompt([
-//         {
+    connection.query("SELECT * FROM employee",
+        function (err, res) {
+            if (err) throw err
+            console.table(res);
+            start()
+        })
 
-//         }
-//     ])
-//     connection.query(function (err, res) {
-//         if (err) throw err;
-//         start();
-//     });
-// };
-
-
-
-
-
+}
 
