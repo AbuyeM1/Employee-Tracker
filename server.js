@@ -135,88 +135,49 @@ function promptRoles(employeInfo, roleList) {
 
 
 }
-// function addEmployee() {
-//     var x = 2;
+function addEmployee() {
+    var x = 2;
 
-//     inquirer
-//         .prompt([
-//             {
-//                 name: "employeesFirst",
-//                 type: "input",
-//                 message: "What is employee first name?",
+    inquirer
+        .prompt([
+            {
+                name: "employeesFirst",
+                type: "input",
+                message: "What is employee first name?",
 
-//             },
-//             {
-//                 name: "employeesLast",
-//                 type: "input",
-//                 message: "What is employee Last name?",
+            },
+            {
+                name: "employeesLast",
+                type: "input",
+                message: "What is employee Last name?",
 
-//             },
+            },
 
-//             {
-//                 name: "managerID",
-//                 type: "input",
-//                 message: "please enter the manager id?",
+            {
+                name: "managerID",
+                type: "input",
+                message: "please enter the manager id?",
 
-//             }
+            }
 
-//         ]).then(ans => {
-//             listRoles(ans);
+        ]).then(ans => {
 
-//         })
-// }
-// function addDepartment() {
-//     inquirer
-//         .prompt([
-//             {
-//                 name: "Department",
-//                 type: "input",
-//                 message: "Please enter the department you would like to add?",
-//             }
-//         ]).then(ans => {
-//             connection.query("INSERT INTO department SET d_name = ?", {
-//                 name: answer.Department
 
-//             });
-//             connection.query("SELECT * FROM department", function (err, res) {
-//                 if (err) throw err;
-//                 console.table(res);
-//                 start();
+            var query = "INSERT INTO employeeDB.employee (first_name, last_name, role_id, manager_id) VALUES (" + `"${employeInfo.employeesFirst}"` + "," + `"${employeInfo.employeesLast}"` + "," + `${ans.roleID}` + "," + `${employeInfo.managerID}` + ")";
+            connection.query(query,
 
-//             })
-//         })
-// }
+                function (err, res) {
+                    if (err) throw err
+                    console.log("Successfully Employee Info Inserted");
+                    start()
+                })
 
-// function addRoles() {
-//     inquirer
-//         .prompt([
-//             {
-//                 name: "title",
-//                 type: "input",
-//                 message: "Please enter the role's title",
-//             },
-//             {
-//                 name: "salary",
-//                 type: "input",
-//                 message: "Please enter the role's salary",
-//             },
-//             {
-//                 name: "department_id",
-//                 type: "input",
-//                 message: "Please enter the department id ",
-//             },
+        })
 
-//         ]).then(ans => {
-//             connection.query("INSERT INTO role SET ?", {
 
-//             });
-//             connection.query("SELECT * FROM role", function (err, res) {
-//                 if (err) throw err;
-//                 console.table(res)
-//             })
 
-//         })
-// }
+}
+
 
 
 
