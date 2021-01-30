@@ -20,15 +20,15 @@
 
 ## Description
 
- 
+   Employee Tracker is an application to see the departments, roles and employees in a business, where the information is shown organized.The business owner may add and remove employees, roles and departments, as well as update the role or manager of the employees.
 
-  ![alttext]()
+  ![alttext](Assets/schema.png)
 
-  ![alttext]()
+  
 
 ## Deployed Link
 
- 
+ [Deployed-Link](https://abuyem1.github.io/Employee-Tracker/)
 
 ## Installation
  * npm init 
@@ -41,14 +41,29 @@
  * node server.js
 
 ## CodeSnippets
+* Seed.sql
+
+       INSERT INTO role
+       (title, salary, department_id)
+       VALUES
+      ('Sales Leader', 100000, 1),
+
+      ('Salesperson', 80000, 2),
+
+      ('Software Engineer', 120000, 3),
+
+      ('Account Manager', 160000, 4),
+
+      ('Legal Team Lead', 250000, 5);
+
+ 
  
 
 ## Technonlogy Use
 
- * Express.js
- * HTML And CSS
- * Node.js
- * Javascript
+ * NODE
+ *  MYSQL
+ * INQUIRER
  
 
 ## License

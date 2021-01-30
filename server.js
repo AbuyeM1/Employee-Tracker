@@ -102,7 +102,7 @@ function listRoles(employeInfo) {
         function (err, res) {
             if (err) throw err
             var roleList = res.map(({ id, title }) => ({ value: id, id: `${id}`, title: `${title}` }));
-            //console.log("roleList",roleList);
+
             return promptRoles(employeInfo, roleList);
         })
 }
@@ -135,88 +135,88 @@ function promptRoles(employeInfo, roleList) {
 
 
 }
-function addEmployee() {
-    var x = 2;
+// function addEmployee() {
+//     var x = 2;
 
-    inquirer
-        .prompt([
-            {
-                name: "employeesFirst",
-                type: "input",
-                message: "What is employee first name?",
+//     inquirer
+//         .prompt([
+//             {
+//                 name: "employeesFirst",
+//                 type: "input",
+//                 message: "What is employee first name?",
 
-            },
-            {
-                name: "employeesLast",
-                type: "input",
-                message: "What is employee Last name?",
+//             },
+//             {
+//                 name: "employeesLast",
+//                 type: "input",
+//                 message: "What is employee Last name?",
 
-            },
+//             },
 
-            {
-                name: "managerID",
-                type: "input",
-                message: "please enter the manager id?",
+//             {
+//                 name: "managerID",
+//                 type: "input",
+//                 message: "please enter the manager id?",
 
-            }
+//             }
 
-        ]).then(ans => {
-            listRoles(ans);
+//         ]).then(ans => {
+//             listRoles(ans);
 
-        })
-}
-function addDepartment() {
-    inquirer
-        .prompt([
-            {
-                name: "Department",
-                type: "input",
-                message: "Please enter the department you would like to add?",
-            }
-        ]).then(ans => {
-            connection.query("INSERT INTO department SET d_name = ?", {
-                name: answer.Department
+//         })
+// }
+// function addDepartment() {
+//     inquirer
+//         .prompt([
+//             {
+//                 name: "Department",
+//                 type: "input",
+//                 message: "Please enter the department you would like to add?",
+//             }
+//         ]).then(ans => {
+//             connection.query("INSERT INTO department SET d_name = ?", {
+//                 name: answer.Department
 
-            });
-            connection.query("SELECT * FROM department", function (err, res) {
-                if (err) throw err;
-                console.table(res);
-                start();
+//             });
+//             connection.query("SELECT * FROM department", function (err, res) {
+//                 if (err) throw err;
+//                 console.table(res);
+//                 start();
 
-            })
-        })
-}
+//             })
+//         })
+// }
 
-function addRoles() {
-    inquirer
-        .prompt([
-            {
-                name: "title",
-                type: "input",
-                message: "Please enter the role's title",
-            },
-            {
-                name: "salary",
-                type: "input",
-                message: "Please enter the role's salary",
-            },
-            {
-                name: "department_id",
-                type: "input",
-                message: "Please enter the department id ",
-            },
+// function addRoles() {
+//     inquirer
+//         .prompt([
+//             {
+//                 name: "title",
+//                 type: "input",
+//                 message: "Please enter the role's title",
+//             },
+//             {
+//                 name: "salary",
+//                 type: "input",
+//                 message: "Please enter the role's salary",
+//             },
+//             {
+//                 name: "department_id",
+//                 type: "input",
+//                 message: "Please enter the department id ",
+//             },
 
-        ]).then(ans => {
-            connection.query("INSERT INTO role SET ?", {
+//         ]).then(ans => {
+//             connection.query("INSERT INTO role SET ?", {
 
-            });
-            connection.query("SELECT * FROM role", function (err, res) {
-                if (err) throw err;
-                console.table(res)
-            })
+//             });
+//             connection.query("SELECT * FROM role", function (err, res) {
+//                 if (err) throw err;
+//                 console.table(res)
+//             })
 
-        })
-}
+//         })
+// }
 
 
 
