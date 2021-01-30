@@ -1,7 +1,11 @@
 USE employeeDB;
 
 INSERT INTO department (name) 
-VALUES ("Sales"), ("Engineer"),("Finance"),("Legal");
+VALUES
+ ("Sales"),
+ ("Engineer"),
+ ("Finance"),
+ ("Legal");
 
 
 INSERT INTO role
